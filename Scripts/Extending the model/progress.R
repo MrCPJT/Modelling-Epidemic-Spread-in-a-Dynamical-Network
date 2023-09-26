@@ -1,16 +1,17 @@
-# Progress
+# Progress function
 
 progress <- function(dat, at) {
   
   # Get status of nodes
   active <- get_attr(dat, "active")
   status <- get_attr(dat, "status")
-  # Get parameters - instead of a single recovery rate
-  # we need progression rates i -> r and r -> s
   
+  # Get parameters - instead of a single recovery rate
+  # Progression rates inf -> rec and rec -> sus
   rs.rate <- get_param(dat, "rs.rate")
   ir.rate <- get_param(dat, "ir.rate")
-  # Code for r -> s progression
+  
+  # Code for rec -> sus progression
   nInf <- 0
   idsEligInf <- which(active == 1 & status == "r")
   nEligInf <- length(idsEligInf)
@@ -24,8 +25,7 @@ progress <- function(dat, at) {
     }
   }
   
-  
-  # Code for i -> r progression
+  # Code for inf -> rec progression
   nRec <- 0
   idsEligRec <- which(active == 1 & status == "i")
   nEligRec <- length(idsEligRec)
@@ -39,19 +39,18 @@ progress <- function(dat, at) {
     }
   }
   
-  
-  
   # Update the infection status of each node
   dat <- set_attr(dat, "status", status)
+  
   # Update the simulation statistics
   dat <- set_epi(dat, "rs.flow", at, nInf)
   dat <- set_epi(dat, "ir.flow", at, nRec)
-  
   
   dat <- set_epi(dat, "s.num", at,
                  sum(active == 1 & status == "s"))
   dat <- set_epi(dat, "r.num", at,
                  sum(active == 1 & status == "r"))
+  
   # Return the current simulation data
   return(dat)
 }

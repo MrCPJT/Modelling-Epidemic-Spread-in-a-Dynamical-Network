@@ -9,11 +9,11 @@ library(gridExtra)
 
 #### Loading the data ####
 
-simdata_jn   <- read.csv("C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\simdata_jn.csv")
-simdata_jn25 <- read.csv("C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\simdata_jn25.csv")
-simdata_jn50 <- read.csv("C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\simdata_jn50.csv")
-simdata_in   <- read.csv("C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\simdata_in.csv")
-simdata_ij   <- read.csv("C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\simdata_ij.csv")
+simdata_jn   <- read.csv("...\\Data\\simdata_jn.csv")
+simdata_jn25 <- read.csv("...\\Data\\simdata_jn25.csv")
+simdata_jn50 <- read.csv("...\\Data\\simdata_jn50.csv")
+simdata_in   <- read.csv("...\\Data\\simdata_in.csv")
+simdata_ij   <- read.csv("...\\Data\\simdata_ij.csv")
 
 
 #### Setting defaults ####

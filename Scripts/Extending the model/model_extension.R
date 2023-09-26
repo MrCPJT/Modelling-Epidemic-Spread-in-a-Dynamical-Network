@@ -35,17 +35,11 @@ n.niso = n/2
 
 nw <- network_initialize(n)
 
-# nw <- set_vertex_attribute(nw, "status", rep(c("i","s"), c(1, n-1)))
-
 nw <- set_vertex_attribute(nw, "group", rep(1:2, c(n.iso, n.niso)))
 
 formation <- ~edges + nodefactor("group")
 
-# formation <- ~edges + nodefactor("group") + nodefactor("status")
-
-
 target.stats <- c(n*1.5/2, n*1/2)
-# Can try two target.stats for the two attributes
 
 coef.diss <- dissolution_coefs(dissolution = ~offset(edges), duration = 30)
 
@@ -53,8 +47,6 @@ est <- netest(nw, formation, target.stats, coef.diss)
 
 #### Simulation ####
 
-# param <- param.net(inf.prob = 0.05, inf.prob.g2 = inf.prob,
-#                   rec.rate = 0.02, rec.rate.g2 = 0.02)
 param <- param.net(inf.prob = 0.05,
                    act.rate = 9.6, rs.rate = 0.011,
                    ir.rate = 0.05,
@@ -62,8 +54,6 @@ param <- param.net(inf.prob = 0.05,
 
 init <- init.net(i.num = 1, i.num.g2 = 1, 
                  r.num = 0, r.num.g2 = 0)
-
-# control <- control.net(type = "SIR", nsims = 5, nsteps = 500, ncores = 5)
 
 control <- control.net(type = NULL,
                        nsteps = n.steps,
@@ -74,7 +64,6 @@ control <- control.net(type = NULL,
                        recovery.FUN = NULL)
 
 sim <- netsim(est, param, init, control)
-
 
 xup = 1000
 yup = 750
@@ -97,12 +86,9 @@ plot(sim, y = c("r.num", "s.num", "s.num.g2", "i.num","i.num.g2"), mean.col = c(
               at=seq(0,yup,100), labels = seq(0,yup,100))
 dev.off()
 
-write.csv(sim, "C:\\Users\\Tynan\\Desktop\\Mathematics\\Year 3\\MTH3022 Graphs\\EpiModel\\Sims\\Data\\practice2.csv", row.names = FALSE)
-
-# + abline(v = c(100,440,560,660,745), col=c("red","red","red","blue","blue"),
-                                              #       lwd=1, lty=3, alpha = 0.5)
-
 yscale.components.HEAT1 <- function(...)
+  
+#### Setting defaults ####
   
 {
   ans <- yscale.components.default(...)
